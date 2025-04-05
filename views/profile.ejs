@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <div
+      class="w-full h-[100dvh] bg-zinc-900 flex items-center flex flex-col gap-4 overflow-y-scroll"
+    >
+      <div class="flex gap-4 justify-center">
+        <div class="w-10 h-10 mt-3 rounded-md object-cover">
+          <img
+            src="<%= user.profilepic.startsWith('https') ? user.profilepic : '/images/' + user.profilepic %>"
+            alt="Profile Picture"
+          />
+        </div>
+        <h2 class="tracking-tighter text-white text-2xl mt-4">
+          Hello <%= user.username %>👋
+        </h2>
+      </div>
+      <form
+        class="flex flex-col items-center gap-4"
+        action="/post"
+        method="post"
+      >
+        <textarea
+          class="h-40 w-100 px-6 py-2 rounded-md bg-zinc-800 text-white outline-none resize-none"
+          id=""
+          name="contents"
+          placeholder="Write Something here"
+        ></textarea>
+        <div class="flex justify-between w-full">
+          <input
+            class="bg-blue-500 text-white py-2 rounded-lg w-30 cursor-pointer"
+            type="submit"
+            value="Create Post"
+          />
+          <div
+            class="bg-red-500 text-white py-2 rounded-lg w-30 cursor-pointer text-center"
+          >
+            <a href="/logout">logout</a>
+          </div>
+        </div>
+      </form>
+      <a class="text-white text-lg" href="/allposts"> Show all posts</a>
+      <div class="flex flex-col gap-4 p-8">
+        <% user.post.reverse().forEach((posts) =>{ %>
+        <h2 class="tracking-tighter text-zinc-300 text-2xl">Your Post</h2>
+        <div class="border-1 rounded-md border-zinc-100">
+          <div class="text-white space-y-4 text-lg p-4">
+            <h2 class="text-blue-500"><%=user.username%></h2>
+            <p><%=posts.contents%></p>
+            <div class="flex gap-8">
+              <span class="text-zinc-600">
+                <%= posts.likes.length %> Likes
+              </span>
+              <a class="text-lg text-green-500" href="/edit/<%= posts._id%>"
+                >Edit</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <% }) %>
+      </div>
+    </div>
+  </body>
+</html>

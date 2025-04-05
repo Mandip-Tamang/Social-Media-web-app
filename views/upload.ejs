@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>  
+</head>
+<body>
+    <div class="w-full h-[100dvh] bg-zinc-900 flex items-center flex flex-col gap-4 overflow-y-scroll text-white">
+
+         <form method="post" action="/uploadFile" enctype="multipart/form-data"> 
+         <input class="border-1 border-zinc-500" type="file" placeholder="Choose file" name="image">
+             <input class="border-1 border-zinc-500" type="submit" placeholder="upload file"> 
+         </form>
+    </div>
+</body>
+</html>

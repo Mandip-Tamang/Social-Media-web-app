@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Posts</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <div
+      class="w-full h-[100dvh] bg-zinc-900 flex justify-center items-center flex flex-col flex-wrap gap-4"
+    >
+      <h2 class="tracking-tighter text-zinc-300 text-2xl">All Posts</h2>
+      <div class="flex flex-col gap-6 p-8 flex-wrap">
+        <% allPostsData.reverse().forEach((posts) =>{ %>
+        <div class="border-1 rounded-md border-zinc-100">
+          <div class="text-white space-y-4 text-lg p-4">
+            <h2 class="text-green-400"><%=posts.post.username%></h2>
+            <p><%=posts.contents%></p>
+            <div class="flex gap-8">
+              <span class="text-zinc-600">
+                <%= posts.likes.length %> Likes
+              </span>
+              <a class="text-blue-500 text-lg" href="/like/<%= posts._id %>"
+                >Like</a
+              >
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </body>
+</html>

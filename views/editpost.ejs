@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <div class="w-full h-screen bg-zinc-900 flex flex-col items-center gap-4">
+      <h2 class="tracking-tighter text-white text-2xl p-5">Edit the post</h2>
+      <form
+        class="flex flex-col gap-6 m-4"
+        action="/update/<%= post._id%>"
+        method="post"
+      >
+        <textarea
+          class="h-40 w-100 px-6 py-2 rounded-md bg-zinc-800 text-white outline-none resize-none"
+          id=""
+          name="oldpost"
+          placeholder="your recent post"
+          disabled
+        >
+ <%= post.contents %></textarea
+        >
+        <textarea
+          class="h-40 w-100 px-6 py-2 rounded-md bg-zinc-800 text-white outline-none resize-none"
+          id=""
+          name="newpost"
+          placeholder="Update Post"
+        ></textarea>
+
+        <div class="flex gap-15">
+          <input
+            class="bg-yellow-500 py-5 px-2 text-white rounded-lg"
+            type="submit"
+            value="Make changes"
+          />
+          <a class="text-red-500 text-lg py-5 px-2" href="/profile"> cancel</a>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
